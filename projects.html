@@ -8,6 +8,7 @@
     <meta name="author" content="Stonebridge Industrial Contractors"> <!-- Author info -->
     <title>Portfolio | Stonebridge Industrial Contractors</title> <!-- Page title -->
     <link rel="stylesheet" href="css/style.css"> <!-- External CSS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- JQuery -->
 </head>
 <body>
 
@@ -58,6 +59,7 @@
             </div>
         </div>
 
+            <!-- BEFORE AND AFTER  -->
             <div class="gallery-grid">
                 <div class="gallery-pair">
                     <img src="images/basic-kitchen.png" alt="kitchen before renovation" loading="lazy">
@@ -90,37 +92,229 @@
             <button class="filter-btn" onclick="filterPortfolio('interior', event)">Interior</button>
         </div>
 
+        <div class="sub-filter-container">
+            <!-- Residential Sub-Filter -->
+            <select id="sub-interior" class="sub-filter-dropdown" onchange="searchPortfolio()" style="display: none;">
+                <option value="all">All Interior</option>
+                <option value="kitchen">Kitchens</option>
+                <option value="bathroom">Bathrooms</option>
+                <option value="bedroom">Bedrooms</option>
+                <option value="living-room">Living Rooms</option>
+            </select>
+
+        <!-- Commercial Sub-Filter -->
+    <select id="sub-commercial" class="sub-filter-dropdown" onchange="searchProjects()" style="display: none;">
+        <option value="all">All Commercial Spaces</option>
+        <option value="office">Offices</option>
+        <option value="restaurant">Restaurants & Cafe</option>
+    </select>
+</div>
+
+            <!-- Search box  -->
         <div class="search-box">
-            <input type="text" id="portfolioSearch" placeholder="Search projects(eg. Kitchen)..." onkeyup="searchPortfolio()">
+            <button type="button" class="search-btn" onclick="searchPortfolio()" aria-label="Search">
+            <img class="search-icon" src="images/icons/search-svgrepo-com.svg" alt="search-icon" width="20" height="20">
+            </button>
+            <input type="text" id="portfolioSearch" placeholder="Search projects (eg. Kitchen)" onkeyup="searchPortfolio()">
         </div>
     </div>
 
     <div class="portfolio-grid">
-        <div class="portfolio-card residential">
+        <div class="portfolio-card interior" data-category="interior" data-sub="living-room">
             <img src="images/picture.png" alt="Luxury home exterior" loading="lazy">
             <h3>Luxury Home Renovation</h3>
         </div>
-        <div class="portfolio-card commercial">
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="offices">
             <img src="images/office-space.jpg" alt="Modern office interior" loading="lazy">
             <h3>Modern Office Space</h3>
         </div>
-        <div class="portfolio-card interior">
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
             <img src="images/ater-2.png" alt="Renovated kitchen" loading="lazy">
             <h3>Kitchen Transformation</h3>
         </div>
-        <div class="portfolio-card residential">
-            <img src="images/home-extension.jpg" alt="Home extension build" loading="lazy">
+
+        <div class="portfolio-card residential" data-category="residential" data-sub="home-extentions">
+            <img src="images/new-upgrade/Residential/pexels-artbovich-7546775.jpg" alt="Home extension build" loading="lazy">
             <h3>Family Home Extension</h3>
         </div>
-        <div class="portfolio-card interior">
+
+        <div class="portfolio-card residential" data-category="residential" data-sub="home-extentions">
+            <img src="images/new-upgrade/Residential/pexels-artbovich-7587879.jpg" alt="Home extension build" loading="lazy">
+            <h3>Family Home Extension</h3>
+        </div>
+
+        <div class="portfolio-card residential" data-category="residential" data-sub="home-extentions">
+            <img src="images/new-upgrade/Residential/pexels-jonathanborba-28586202.jpg" alt="Home extension build" loading="lazy">
+            <h3>Family Home Extension</h3>
+        </div>
+
+        <div class="portfolio-card residential" data-category="residential" data-sub="home-extentions">
+            <img src="images/new-upgrade/Residential/pexels-littlehampton-bricks-2717960-4626268.jpg" alt="Home extension build" loading="lazy">
+            <h3>Family Home Extension</h3>
+        </div>
+
+        <div class="portfolio-card residential" data-category="residential" data-sub="home-extentions">
+            <img src="images/new-upgrade/Residential/pexels-stradbroke-island-2161582892-37588543.jpg" alt="Home extension build" loading="lazy">
+            <h3>Family Home Extension</h3>
+        </div>
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
             <img src="images/bedroom-modefication.jpg" alt="Bedroom renovation" loading="lazy">
             <h3>Bedroom Renovation</h3>
         </div>
-        <div class="portfolio-card interior">
+        <div class="portfolio-card interior" data-category="interior" data-sub="bathroom">
             <img src="images/spa-bathroom.jpg" alt="Spa bathroom" loading="lazy">
             <h3>Spa-Style Bathroom</h3>
-        </div>
     </div>
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/black-bedroom.jpg" alt="Black style bedroom" loading="lazy">
+            <h3>Black style bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/modified-bedroom.jpg" alt="Modern bedroom" loading="lazy">
+            <h3>Modern Bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/master-bedroom.jpg" alt="Master Bedroom" loading="lazy">
+            <h3>Master Bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bathroom">
+            <img src="images/new-upgrade/interior/bathroom/pexels-curtis-adams-1694007-3935352.jpg" alt="cream-white bathroom" loading="lazy">
+            <h3>Cream white bathroom</h3>
+        </div>
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/Screenshot 2026-10-30 142725.png" alt="Black Luxury kitchen" loading="lazy">
+            <h3>Luxury Kitchen</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="living-room">
+            <img src="images/new-upgrade/interior/living-room/ali-moradi-2YqoWuYoFgI-unsplash.jpg" alt="Modern living room" loading="lazy">
+            <h3>Modern Dining Room</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="living-room">
+            <img src="images/new-upgrade/interior/living-room/ali-moradi-Je1_Y3jYy50-unsplash.jpg" alt="living-room" loading="lazy">
+            <h3>Cosey Living Room</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/pexels-smart-renovations-2151234310-31913354.jpg" alt="kitchen" loading="lazy">
+            <h3>Kitchen with island</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/lotus-design-n-print-j6QSUeiW6vo-unsplash.jpg" alt="Grey Ash Kitchen" loading="lazy">
+            <h3>Grey Ash Kitchen</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bathroom">
+            <img src="images/new-upgrade/interior/bathroom/pexels-ela-de-pure-1402904686-33599113.jpg" alt="Black modern Bathroom" loading="lazy">
+            <h3>Black-Style Bathroom</h3>
+    </div>
+
+    
+
+
+     <div class="portfolio-card commercial" data-category="commercial" data-sub="offices">
+            <img src="images/new-upgrade/Commercial/Office/pexels-doan-thanh-binh-2147604563-36631641.jpg" alt="Luxury home exterior"loading="lazy">
+            <h3>Luxury Home Renovation</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="offices">
+            <img src="images/new-upgrade/Commercial/Office/pexels-mike-van-schoonderwalt-1884800-5511130.jpg" alt="Luxury home exterior" loading="lazy">
+            <h3>Luxury Home Renovation</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="offices">
+            <img src="images/new-upgrade/Commercial/Office/pexels-rajeshverma-8236021.jpg" alt="Luxury home exterior" loading="lazy">
+            <h3>Luxury Home Renovation</h3>
+        </div>
+        
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="offices">
+            <img src="images/new-upgrade/Commercial/Office/pexels-ranamatloob567-35203646.jpg" alt="Luxury home exterior" loading="lazy">
+            <h3>Luxury Home Renovation</h3>
+        </div>
+       
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-beyzaa-279977530-18617718.jpg" alt="green-tea cafe" loading="lazy">
+            <h3>Green Tea Cafe</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-dinaziz2462-30915537.jpg" alt="olive-cafe" loading="lazy">
+            <h3>Olive cafe</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-lens-clickk-2148991298-30479386.jpg" alt="moonshine restaurant" loading="lazy">
+            <h3>Moonshine Restaurant</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-misbaa-eri-426041722-37532761.jpg" alt="Sandton Restaurant" loading="lazy">
+            <h3>Sandton Restaurant</h3>
+        </div>
+
+        <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-misbaa-eri-426041722-37532763.jpg" alt="Flame & Grill Restaurant" loading="lazy">
+            <h3>Flame & Grill Restaurant</h3>
+        </div>
+
+         <div class="portfolio-card commercial" data-category="commercial" data-sub="restaurants-&-cafe">
+            <img src="images/new-upgrade/Commercial/Restaurant and Cafe/pexels-saif-photos-517644162-38774816.jpg" alt="Norama 9 Restaurant & Cafe" loading="lazy">
+            <h3>Norama 9 Restaurant & Cafe</h3>
+        </div>
+
+        
+
+
+
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/bedroom-modefication.jpg" alt="Bedroom renovation" loading="lazy">
+            <h3>Bedroom Renovation</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bathroom">
+            <img src="images/spa-bathroom.jpg" alt="Spa bathroom" loading="lazy">
+            <h3>Spa-Style Bathroom</h3>
+    </div>
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/black-bedroom.jpg" alt="Black style bedroom" loading="lazy">
+            <h3>Black style bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/modified-bedroom.jpg" alt="Modern bedroom" loading="lazy">
+            <h3>Modern Bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bedroom">
+            <img src="images/new-upgrade/interior/bedroom/master-bedroom.jpg" alt="Master Bedroom" loading="lazy">
+            <h3>Master Bedroom</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="bathroom">
+            <img src="images/new-upgrade/interior/bathroom/pexels-curtis-adams-1694007-3935352.jpg" alt="cream-white bathroom" loading="lazy">
+            <h3>Cream white bathroom</h3>
+        </div>
+
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/Screenshot 2026-10-30 142725.png" alt="Black Luxury kitchen" loading="lazy">
+            <h3>Luxury Kitchen</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="living-room">
+            <img src="images/new-upgrade/interior/living-room/pexels-artbovich-6585599.jpg" alt="Modern living room" loading="lazy">
+            <h3>Modern Dining Room</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="living-room">
+            <img src="images/new-upgrade/interior/living-room/spacejoy-4xRP0Ajk9ys-unsplash.jpg" alt="living-room" loading="lazy">
+            <h3>Cosey Living Room</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/pexels-smart-renovations-2151234310-31913354.jpg" alt="kitchen" loading="lazy">
+            <h3>Kitchen with island</h3>
+        </div>
+        <div class="portfolio-card interior" data-category="interior" data-sub="kitchen">
+            <img src="images/new-upgrade/interior/kitchen/lotus-design-n-print-j6QSUeiW6vo-unsplash.jpg" alt="Grey Ash Kitchen" loading="lazy">
+            <h3>Grey Ash Kitchen</h3>
+        </div>
+</div>
 </section>
     </main>
 
@@ -175,7 +369,7 @@
 <div class="social-links footer-social"> <!-- Social media links container -->
 <a href="#" aria-label="Facebook">Facebook</a> <!-- Facebook link, but doesnt lead to the platform, the company does not YET social media, it is in progress-->
 <a href="#" aria-label="Instagram">Instagram</a> <!-- Instagram link, but doesnt lead to the platform, the company does not YET social media, it is in progress -->
-<a href="#" aria-label="LinkedIn">LinkedIn</a> <!-- LinkedIn link, but doesnt lead to the platform, the company does not YET social media, it is in progress -->
+<a href="https://www.tiktok.com/@stonebridgeindustrial?is_from_webapp=1&sender_device=pc" aria-label="TikTok">TikTok</a> <!-- TikTok link-->
 </div>
 </div>
 
@@ -190,7 +384,7 @@
 
 <div> <!-- Contact details block -->
 <h4>Contact</h4> <!-- Section heading -->
-<a href="mailto:info@stonebridgeindustrialcontractors.co.za">info@stonebridgeindustrialcontractors.co.za</a> <!-- Email link -->
+<a href="mailto:stonebridgeindustrialc@gmail.com">stonebridgeindustrialc@gmail.com</a> <!-- Email link -->
 <a href="tel:+27811234567">+27 81 123 4567</a> <!-- Phone link -->
 </div><!-- Contact details div closes -->
 </div> <!-- Footer content wrapper closes -->

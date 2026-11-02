@@ -114,7 +114,16 @@ Changelog and Milestones:
 18-09-2026
 - Tested layout and scripts across desktop, tablet, and mobile views
 - Final code cleanup and submission preparation
-- Final Submissin of the POE
+- Final Submissin of the Part 2
+
+20-10-2026
+- Added a folder of pictures to my images folder
+- Updated projects.html
+
+20-10-2026
+- Added live google maps on contact.html
+- Added real links to the social media buttons to every footer of the page
+
 
 
 Part 1 Details:
@@ -145,6 +154,13 @@ Part 2  and Part 3 (POE) Details:
 - Search feature in the projects page
 - Google interactive maps
 - Gallery lightbox feature in the projects and about us pages
+- Interactive Google maps added to contact.html
+- Active social media links added
+- Local SEO and social media 
+- Conact and enquiry forms validation added
+- Interactive functionality
+- Search feature in projects.html
+- AJAX implemented in forms
 
 
 
@@ -183,3 +199,5 @@ W3Schools, (n.d.) JavaScript HTML DOM. Available at: https://www.w3schools.com/j
 W3Schools, (n.d.) CSS Interactive Pseudo-classes. Available at: https://www.w3schools.com/Css/css_pseudo_classes_interactive.asp (Accessed: 12 September 2026).
 
 W3Schools, (n.d.) CSS z-index Property. Available at: https://www.w3schools.com/css/css_z-index.asp (Accessed: 12 September 2026).
+
+iStock, (n.d). Industrial contractor stock images [Images]. Available at: https://www.istockphoto.com/search/2/image-film?phrase=industrial%20contractor [Accessed: 20 October 2026].

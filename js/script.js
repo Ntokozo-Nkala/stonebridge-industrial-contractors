@@ -90,14 +90,12 @@ if (enquiryForm) {
             return;
         }
 
-        // Calculation with South African Rand formatting
         const totalCost = rate * size;
         const formattedCost = totalCost.toLocaleString('en-ZA', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
 
-        // Safe DOM insertion preventing XSS vulnerabilities
         if (resultText) {
             resultText.textContent = `Thank you ${name}! Estimated Cost for ${size} m² is: R ${formattedCost}`;
         }
@@ -108,146 +106,168 @@ if (enquiryForm) {
     });
 }
 
-// Contact Form: JS Validation, Security & Green Outer Block Success State
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
 
-        clearErrors();
+// Contact Form: Validation, Security and Green Outer Block Success State
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
 
-        const outerSection = document.getElementById('contactSection') || contactForm.closest('.contact');
-        if (outerSection) outerSection.classList.remove('outer-block-success');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        // Handles both nameInput and contactName element IDs automatically
-        const nameEl = document.getElementById('nameInput') || document.getElementById('contactName');
-        const emailEl = document.getElementById('emailInput') || document.getElementById('contactEmail');
-        const phoneEl = document.getElementById('phoneInput') || document.getElementById('contactPhone');
-        const subjectEl = document.getElementById('subjectInput') || document.getElementById('contactSubject');
-        const messageEl = document.getElementById('messageInput') || document.getElementById('contactMessage');
+            clearErrors();
 
-        const name = nameEl ? nameEl.value.trim() : '';
-        const email = emailEl ? emailEl.value.trim() : '';
-        const phone = phoneEl ? phoneEl.value.trim() : '';
-        const subject = subjectEl ? subjectEl.value.trim() : '';
-        const message = messageEl ? messageEl.value.trim() : '';
+            const nameInput = document.getElementById('nameInput');
+            const emailInput = document.getElementById('emailInput');
+            const phoneInput = document.getElementById('phoneInput');
+            const branchSelect = document.getElementById('branchSelect');
+            const subjectInput = document.getElementById('subjectInput');
+            const messageInput = document.getElementById('messageInput');
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phonePattern = /^(\+27|0)\d{9}$/;
+            const name = nameInput ? nameInput.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+            const phone = phoneInput ? phoneInput.value.trim() : '';
+            const branch = branchSelect ? branchSelect.value : '';
+            const subject = subjectInput ? subjectInput.value.trim() : '';
+            const message = messageInput ? messageInput.value.trim() : '';
 
-        let isValid = true;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^(\+27|0)\d{9}$/;
 
-        if (!name) {
-            showError('nameError', 'Please enter your name.', nameEl);
-            isValid = false;
-        }
+            let isValid = true;
 
-        if (!emailPattern.test(email)) {
-            showError('emailError', 'Please enter a valid email address.', emailEl);
-            isValid = false;
-        }
-
-        if (!phonePattern.test(phone)) {
-            showError('phoneError', 'Please enter a valid 10-digit phone number (e.g., 0811234567).', phoneEl);
-            isValid = false;
-        }
-
-        if (!subject) {
-            showError('subjectError', 'Please enter a subject.', subjectEl);
-            isValid = false;
-        }
-
-        if (!message) {
-            showError('messageError', 'Please enter your message.', messageEl);
-            isValid = false;
-        }
-
-        if (isValid) {
-            // Apply green success background to the outer block
-            if (outerSection) {
-                outerSection.classList.add('outer-block-success');
+            if (!name) {
+                showError('nameError', 'Please enter your name.', nameInput);
+                isValid = false;
             }
 
-            const formStatus = document.getElementById('formStatus') || document.querySelector('.form-status');
-            const submitBtn = document.getElementById('sendEmailBtn') || contactForm.querySelector('button[type="submit"]');
+            if (!emailPattern.test(email)) {
+                showError('emailError', 'Please enter a valid email address.', emailInput);
+                isValid = false;
+            }
+
+            if (!phonePattern.test(phone)) {
+                showError('phoneError', 'Please enter a valid 10-digit phone number.', phoneInput);
+                isValid = false;
+            }
+
+            if (!branch) {
+                showError('branchError', 'Please select a branch location.', branchSelect);
+                isValid = false;
+            }
+
+            if (!subject) {
+                showError('subjectError', 'Please enter a subject.', subjectInput);
+                isValid = false;
+            }
+
+            if (!message) {
+                showError('messageError', 'Please enter your message.', messageInput);
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('sendEmailBtn');
 
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending Email...';
             }
 
-            setTimeout(() => {
+            // Web3Forms Submit
+            const formData = new FormData(contactForm);
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message';
                 }
 
-                // Render explicit Email Sent Success banner
                 if (formStatus) {
                     formStatus.style.display = 'block';
-                    formStatus.className = 'form-status success-box';
-                    formStatus.innerHTML = `
-                        <strong>Email Sent Successfully!</strong><br>
-                        Thank you, <em>${escapeHTML(name)}</em>. Your message has been sent and we will respond to you via email as soon as possible.
-                    `;
+                    if (data.success) {
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = `Thank you, ${name}! Your message has been successfully sent to our ${branch} branch.`;
+                        contactForm.reset();
+                    } else {
+                        formStatus.className = 'form-status error';
+                        formStatus.textContent = data.message || 'Something went wrong. Please try again.';
+                    }
                 }
-
-                contactForm.reset();
-            }, 1000);
-        }
-    });
-}
-
-// Portfolio Category Filtering
-function filterPortfolio(category, event) {
-    const cards = document.querySelectorAll('.portfolio-card');
-    cards.forEach(card => {
-        if (category === 'all' || card.classList.contains(category)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    // Handle button active state toggles
-    if (event && event.target) {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+            });
+        });
     }
-}
-
+});
+    
+// Portfolio gallery filter
 let activeCategory = 'all';
 
 function filterPortfolio(category, event) {
     activeCategory = category;
-    
+
     if (event && event.target) {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        $('.filter-btn').removeClass('active');
+        $(event.target).addClass('active');
     }
 
-    searchPortfolio();
+    // Hide all sub-filter dropdowns first
+    const $subResidential = $('#sub-residential');
+    const $subCommercial = $('#sub-commercial');
+    const $subInterior = $('#sub-interior');
+
+    $subResidential.hide();
+    $subCommercial.hide();
+    $subInterior.hide();
+
+    // Show the correct dropdown based on what was clicked
+    if (category === 'residential') {
+        $subResidential.fadeIn(200).val('all'); 
+    } else if (category === 'commercial') {
+        $subCommercial.fadeIn(200).val('all'); 
+    } else if (category === 'interior') {
+        $subInterior.fadeIn(200).val('all'); 
+    }
+
+    searchPortfolio(); 
 }
 
 function searchPortfolio() {
-    const searchInput = document.getElementById('portfolioSearch');
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const cards = document.querySelectorAll('.portfolio-card');
+    const query = $('#portfolioSearch').val() ? $('#portfolioSearch').val().toLowerCase().trim() : '';
+    let activeSubFilter = 'all';
+    if ($('#sub-residential').is(':visible')) {
+        activeSubFilter = $('#sub-residential').val();
+    } else if ($('#sub-commercial').is(':visible')) {
+        activeSubFilter = $('#sub-commercial').val();
+    } else if ($('#sub-interior').is(':visible')) {
+        activeSubFilter = $('#sub-interior').val();
+    }
 
-    cards.forEach(card => {
-        const matchesCategory = activeCategory === 'all' || card.classList.contains(activeCategory);
-        const titleText = card.querySelector('h3')?.textContent.toLowerCase() || '';
+    $('.portfolio-card').each(function() {
+        const $card = $(this);
+        const titleText = $card.find('h3').text().toLowerCase() || '';
         const matchesSearch = titleText.includes(query);
+        
+        const matchesCategory = (activeCategory === 'all' || $card.hasClass(activeCategory) || $card.attr('data-category') === activeCategory);
+        const cardSub = $card.attr('data-sub') || '';
+        const matchesSub = (activeSubFilter === 'all' || cardSub === activeSubFilter);
 
-        if (matchesCategory && matchesSearch) {
-            card.style.display = 'block';
+        if (matchesCategory && matchesSub && matchesSearch) {
+            $card.stop(true, true).fadeIn(300);
         } else {
-            card.style.display = 'none';
+            $card.stop(true, true).fadeOut(200);
         }
     });
 }
+
 
 // Image Comparison Slider
 const slider = document.getElementById('slider');
@@ -285,3 +305,57 @@ function escapeHTML(str) {
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
     );
 }
+
+
+// Testimonial Slider
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dotsContainer = document.getElementById('testimonialDots');
+
+    let currentSlide = 0;
+    let autoSlide;
+
+    if (!testimonials.length || !dotsContainer) return;
+
+    testimonials.forEach((testimonial, index) => {
+        const dot = document.createElement('button');
+
+        dot.classList.add('testimonial-dot');
+        dot.setAttribute('aria-label', `Show testimonial ${index + 1}`);
+
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            startAutoSlide();
+        });
+
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+
+    function showSlide(index) {
+        testimonials.forEach((testimonial, i) => {
+            testimonial.classList.toggle('active-slide', i === index);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+            dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+        });
+
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % testimonials.length;
+        showSlide(nextIndex);
+    }
+
+    function startAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    showSlide(0);
+    startAutoSlide();
+});

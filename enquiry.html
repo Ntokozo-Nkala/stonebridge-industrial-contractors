@@ -8,6 +8,7 @@
     <meta name="author" content="Stonebridge Industrial Contractors"> <!-- Author info -->
     <title>Enquiry | Stonebridge Industrial Contractors</title> <!-- Page title -->
     <link rel="stylesheet" href="css/style.css"> <!-- External CSS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -78,7 +79,7 @@
 <p>Ready to start your next construction or renovation project?</p> <!-- Intro text -->
 <div class="contact-box"> <!-- Email box -->
 <h4>Email</h4> <!-- Label -->
-<p class="contact-link">info@stonebridgeindustrialcontractors.co.za</p> <!-- Email -->
+<p class="contact-link">stonebridgeindustrialc@gmail.com</p> <!-- Email -->
 <div class="contact-box"> <!-- Phone box -->
 <h4>Phone</h4> <!-- Label -->
 <p><a href="tel:+27811234567" class="contact-link">+27 81 123 4567</a></p> <!-- Phone link -->
@@ -88,12 +89,15 @@
 <div class="social-links"> <!-- Social links container -->
 <a href="#" aria-label="Facebook">Facebook</a> <!-- Facebook link -->
 <a href="#" aria-label="Instagram">Instagram</a> <!-- Instagram link -->
-<a href="#" aria-label="LinkedIn">LinkedIn</a> <!-- LinkedIn link -->
+<a href="https://www.tiktok.com/@stonebridgeindustrial?is_from_webapp=1&sender_device=pc" aria-label="TikTok">TikTok</a> <!-- TikTok link -->
 </div>
 </div>
 </div>
 
-<form class="contact-form" id="contactForm" novalidate> <!-- Contact form -->
+<form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate> <!-- Contact form -->
+    <input type="hidden" name="access_key" value="ba1d7a65-e414-4c4b-b1c0-2292251f3f24">
+    <input type="hidden" name="subject" value="New Stonebridge Website Enquiry Request">
+
             <div class="form-status" id="formStatus" style="display: none;"></div> <!-- Form status -->
 
             <div class="form-group"> <!-- Name field -->
@@ -110,9 +114,19 @@
 
             <div class="form-group"> <!-- Phone field -->
                 <label for="phoneInput">Phone Number <span class="required">*</span></label> <!-- Label -->
-                <input type="tel" placeholder="0811234567" name="phone" id="phoneInput" required> <!-- Input -->
+                <input type="tel" placeholder="0811234567" name="phone" id="phoneInput" pattern="^(\+27|0)\d{9}$" required> <!-- Input -->
                 <span class="error-msg" id="phoneError"></span> <!-- Error message -->
             </div>
+
+            <div class="form-group">
+        <label for="branchSelect">Nearest Branch <span class="required">*</span></label>
+        <select id="branchSelect" name="branch" required>
+            <option value="">-- Select Branch --</option>
+            <option value="Bloemfontein">Bloemfontein Branch</option>
+            <option value="Kimberley">Kimberley Branch</option>
+        </select>
+        <span class="error-msg" id="branchError"></span>
+    </div>
 
             <div class="form-group"> <!-- Subject field -->
                 <label for="subjectInput">Subject <span class="required">*</span></label> <!-- Label -->
@@ -142,7 +156,7 @@
 <div class="social-links footer-social"> <!-- Social media links container -->
 <a href="#" aria-label="Facebook">Facebook</a> <!-- Facebook link, but doesnt lead to the platform, the company does not YET social media, it is in progress-->
 <a href="#" aria-label="Instagram">Instagram</a> <!-- Instagram link, but doesnt lead to the platform, the company does not YET social media, it is in progress -->
-<a href="#" aria-label="LinkedIn">LinkedIn</a> <!-- LinkedIn link, but doesnt lead to the platform, the company does not YET social media, it is in progress -->
+<a href="https://www.tiktok.com/@stonebridgeindustrial?is_from_webapp=1&sender_device=pc" aria-label="TikTok">TikTok</a> <!-- TikTok link-->
 </div>
 </div>
 
@@ -157,7 +171,7 @@
 
 <div> <!-- Contact details block -->
 <h4>Contact</h4> <!-- Section heading -->
-<a href="mailto:info@stonebridgeindustrialcontractors.co.za">info@stonebridgeindustrialcontractors.co.za</a> <!-- Email link -->
+<a href="mailto:stonebridgeindustrialc@gmail.com">stonebridgeindustrialc@gmail.com</a> <!-- Email link -->
 <a href="tel:+27811234567">+27 81 123 4567</a> <!-- Phone link -->
 </div><!-- Contact details div closes -->
 </div> <!-- Footer content wrapper closes -->

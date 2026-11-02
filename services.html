@@ -11,21 +11,23 @@
 </head>
 <body>
 
-<!-- Header and nav bar - handles the navigation througout the website pages -->
-    <header class="navbar">
-    <img src="images/stonebridge-logo.png" alt="Stonebridge Logo" width="100" height="100">
-<nav id="mainNav">
-<a href="index.html" class="nav-link">Home</a>
-<a href="about.html" class="nav-link">About</a>
-<a href="services.html" class="nav-link">Services</a>
-<a href="projects.html" class="nav-link">Portfolio</a>
-<a href="enquiry.html" class="nav-link">Enquiry</a>
-<a href="contact.html" class="nav-link">Contact</a>
-</nav>
-<button>
-<a href="contact.html" class="quote-btn">Get a Quote</a>
-</button>
-</header>
+  <!-- Header and nav bar - handles the navigation througout the website pages -->
+<header class="navbar"> <!-- Contains the main website navigation bar -->
+    <img class="logo" src="images/stonebridge-logo.png" alt="Stonebridge Logo" width="100" height="100">   <!-- Displays the website logo image -->
+    <div class="menu-wrapper"> <!-- Wraps the mobile toggle button and navigation menu -->
+        <button class="mobile-toggle" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>    <!-- Hamburger button to toggle the mobile menu -->
+        <nav id="mainNav">  <!-- Defines the main navigation menu -->
+            <a href="index.html" class="nav-link">Home</a>  <!-- Link to the home page -->
+            <a href="about.html" class="nav-link">About</a>   <!-- Link to the about page -->
+            <a href="services.html" class="nav-link">Services</a>  <!-- Link to the services page -->
+            <a href="projects.html" class="nav-link">Portfolio</a>   <!-- Link to the portfolio/projects page -->
+            <a href="enquiry.html" class="nav-link">Enquiry</a>   <!-- Link to the enquiry page -->
+            <a href="contact.html" class="nav-link">Contact</a>    <!-- Link to the contact page -->
+        </nav>  <!-- Closes the main navigation menu -->
+    </div>   <!-- Closes the menu wrapper container -->
+
+    <a href="contact.html" class="quote-btn">Get a Quote</a>  <!-- Button linking to the contact page -->
+</header>  <!-- Closes the header section -->
 
 <!-- Main content of the services page -->
 <main>
@@ -105,7 +107,7 @@
 
 <div> <!-- Contact details block -->
 <h4>Contact</h4> <!-- Section heading -->
-<a href="mailto:info@stonebridgeindustrialcontractors.co.za">info@stonebridgeindustrialcontractors.co.za</a> <!-- Email link -->
+<a href="mailto:stonebridgeindustrialc@gmail.com">stonebridgeindustrialc@gmail.com</a> <!-- Email link -->
 <a href="tel:+27811234567">+27 81 123 4567</a> <!-- Phone link -->
 </div><!-- Contact details div closes -->
 </div> <!-- Footer content wrapper closes -->
