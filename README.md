@@ -122,9 +122,28 @@ Changelog and Milestones:
 
 20-10-2026
 - Added live google maps on contact.html
+- Made real company social media accounts for promoting
+
+21-10-2026
+- Debugged project.html, contact.html and services.html
 - Added real links to the social media buttons to every footer of the page
+- Added the company's content on the social media accounts
 
+21-10-2026
+- Added subfoldersa and images to the images folder
+- Added robots.txt earch engine cwarlers
+- Implemeted validation and security to the forms
 
+26-10-2026
+- Updated projects.html
+- Esured responsiveness
+
+29-10-2026
+- Implemeted JS animations 
+- Deployed the web appliaction
+
+02-11-2026
+- Final Submission of the POE
 
 Part 1 Details:
 * Built only with HTML
@@ -159,8 +178,9 @@ Part 2  and Part 3 (POE) Details:
 - Local SEO and social media 
 - Conact and enquiry forms validation added
 - Interactive functionality
-- Search feature in projects.html
+- Search and filter features in projects.html
 - AJAX implemented in forms
+- new icons on all page footers
 
 
 
@@ -200,4 +220,8 @@ W3Schools, (n.d.) CSS Interactive Pseudo-classes. Available at: https://www.w3sc
 
 W3Schools, (n.d.) CSS z-index Property. Available at: https://www.w3schools.com/css/css_z-index.asp (Accessed: 12 September 2026).
 
-iStock, (n.d). Industrial contractor stock images [Images]. Available at: https://www.istockphoto.com/search/2/image-film?phrase=industrial%20contractor [Accessed: 20 October 2026].
+pexels, (n.d). Home interior [Images]. Available at: https://www.pexels.com/search/home%20interior/[Accessed: 20 October 2026].
+
+W3Schools, (n.d.) CSS Interactive Pseudo-classes. Available at: https://www.w3schools.com/jquery/jquery_hide_show.asp (Accessed: 21 October 2026).
+
+Flaticon, (n.d). Free icons [Icons] Flaticon. Available at: https://www.flaticon.com/uicons/interface-icons  [Accessed 23 August 2026].
