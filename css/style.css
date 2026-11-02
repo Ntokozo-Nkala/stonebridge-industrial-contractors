@@ -1102,6 +1102,22 @@ footer {
     color: #081124;
 }
 
+.footer-contact-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin-top: 0.75rem;
+}
+
+.footer-contact-icons img {
+    flex-shrink: 0; 
+    display: block;
+}
+
+.footer-contact-icons a {
+    margin-top: 0 !important; 
+}
+
 @keyframes fadeUp {
     from {
         opacity: 0;
