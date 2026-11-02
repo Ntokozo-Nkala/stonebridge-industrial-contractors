@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://stonebridge-industrialcontructors.netlify.app/sitemap.xml
+Sitemap: https://stonebridge-industrial-contractors.vercel.app/sitemap.xml
