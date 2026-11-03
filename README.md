@@ -224,4 +224,4 @@ pexels, (n.d). Home interior [Images]. Available at: https://www.pexels.com/sear
 
 W3Schools, (n.d.) CSS Interactive Pseudo-classes. Available at: https://www.w3schools.com/jquery/jquery_hide_show.asp (Accessed: 21 October 2026).
 
-Flaticon, (n.d). Free icons [Icons] Flaticon. Available at: https://www.flaticon.com/uicons/interface-icons  [Accessed 23 August 2026].
+Flaticon, (n.d). Free icons [Icons] Flaticon. Available at: https://www.flaticon.com/uicons/interface-icons  [Accessed 23 October 2026].
